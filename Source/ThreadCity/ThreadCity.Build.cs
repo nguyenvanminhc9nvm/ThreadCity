@@ -8,16 +8,24 @@ public class ThreadCity : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
-
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
-
-		// Uncomment if you are using Slate UI
-		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
+		PublicDependencyModuleNames.AddRange(new[]
+		{
+			"GameplayCameras","Core", "CoreUObject", "Engine", "InputCore", "AnimationWarpingRuntime", "UMG", "CommonUI", "CommonInput", "DeveloperSettings",
+			"EnhancedInput", "MotionWarping", "PoseSearch", "GameplayAbilities", "GameplayTags", "AnimGraphRuntime",
+			"GameplayTasks", "ModularGameplay", "Niagara", "NetCore","GameplayCameras", "PhysicsCore",
+			"Iris", "Slate", "SlateCore", "GameFeatures", "ApplicationCore", "InputCore", "CommonInput", "PreLoadScreen", "ControlFlows", "HairStrandsCore",
+			"MetasoundEngine", "ChaosVehicles"
+		});
 		
-		// Uncomment if you are using online features
-		// PrivateDependencyModuleNames.Add("OnlineSubsystem");
-
-		// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
+		// Editor-only modules for K2Node support
+		if (Target.bBuildEditor)
+		{
+			PrivateDependencyModuleNames.AddRange(new[]
+			{
+				"KismetCompiler",
+				"BlueprintGraph"
+			});
+		}
+		
 	}
 }
